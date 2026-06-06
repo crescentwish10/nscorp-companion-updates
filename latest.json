@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v1.0.0/NSCORP_Companion_QA_Package.zip",
+  "version": "1.0.1",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v1.0.1/NSCORP_Companion_QA_Package.zip",
   "fileName": "NSCORP_Companion_QA_Package.zip",
-  "notes": "Initial team QA package with Hybrid Reps tab."
+  "notes": "Added App Updates panel for GitHub update checks and in-app installation."
 }
