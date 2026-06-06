@@ -1,6 +1,6 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v1.0.2/NSCORP_Companion_QA_Package.zip",
   "fileName": "NSCORP_Companion_QA_Package.zip",
-  "notes": "Fixed the first updater unzip issue. This version must be installed manually once if you are on v1.0.1."
+  "notes": "..."
 }
