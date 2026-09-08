@@ -1,0 +1,92 @@
+{
+  "reps": {
+    "811824": {
+      "internalId": "811824",
+      "hybrid": true,
+      "name": "Larson, Trent",
+      "vertical": "Software",
+      "tier": "Corporate",
+      "salesSubRegion": "West",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-23T01:35:27.643Z"
+    },
+    "847543": {
+      "internalId": "847543",
+      "hybrid": true,
+      "name": "Klein, Joshua",
+      "vertical": "Software",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-23T08:52:38.469Z"
+    },
+    "867622": {
+      "internalId": "867622",
+      "hybrid": true,
+      "name": "Cerasuolo, Danny",
+      "vertical": "Products",
+      "tier": "Corporate",
+      "salesSubRegion": "Central",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-06T17:51:14.230Z"
+    },
+    "893922": {
+      "internalId": "893922",
+      "hybrid": true,
+      "name": "Stephenson, Brady",
+      "vertical": "Business Services",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-05T06:25:33.994Z"
+    },
+    "908425": {
+      "internalId": "908425",
+      "hybrid": true,
+      "name": "Krell, Alexander",
+      "vertical": "Consumer Services",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-05T06:23:43.430Z"
+    },
+    "1041679": {
+      "internalId": "1041679",
+      "hybrid": true,
+      "name": "Brandser, Hayley",
+      "vertical": "Software",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-08-12T03:58:48.476Z"
+    },
+    "1078397": {
+      "internalId": "1078397",
+      "hybrid": true,
+      "name": "Casey, Mac",
+      "vertical": "Health & Hospitality",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-07-24T07:20:48.421Z"
+    },
+    "1312342": {
+      "internalId": "1312342",
+      "hybrid": true,
+      "name": "McNeil, Scott",
+      "vertical": "Software",
+      "tier": "Corporate",
+      "salesSubRegion": "East",
+      "salesRole": "Sales Rep",
+      "rosterStatus": "Active",
+      "updatedAt": "2026-06-22T07:35:35.063Z"
+    }
+  }
+}

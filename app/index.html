@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetSuite Companion App</title>
+    <link rel="icon" type="image/png" href="companion-favicon.png?v=1">
+    <link rel="stylesheet" href="styles.css?v=ui-v230-panel-height-stickies-20260903">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="layout">
+        <aside class="left-column app-sidebar">
+          <div class="sidebar-brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <div>
+              <strong>NetSuite</strong>
+              <span>Companion App</span>
+            </div>
+          </div>
+
+          <section class="sidebar-section">
+            <div class="panel-heading">
+              <h2>Connection</h2>
+            </div>
+            <label class="browser-picker" for="browserSelect">
+              <span>Browser</span>
+              <select id="browserSelect" aria-label="Companion browser">
+                <option value="chrome">Google Chrome</option>
+                <option value="firefox">Mozilla Firefox</option>
+              </select>
+            </label>
+            <div class="actions stacked">
+              <button id="launchButton" type="button" class="sidebar-option icon-chrome">Launch NSCORP Chrome</button>
+              <button id="connectButton" type="button" class="secondary sidebar-option icon-link">Connect</button>
+            </div>
+            <div id="connectStatus" class="status-box"></div>
+          </section>
+
+          <section class="sidebar-section">
+            <div class="panel-heading compact">
+              <h2>Clipboard</h2>
+            </div>
+            <div class="open-link-tools">
+              <button id="openClipboardLinkButton" type="button" class="secondary sidebar-option icon-clipboard">Open Clipboard Link</button>
+            </div>
+            <div id="openLinkStatus" class="status-box link-status"></div>
+          </section>
+
+          <section class="sidebar-section navigation-panel">
+            <div class="panel-heading compact">
+              <h2>Tools</h2>
+            </div>
+            <div class="mode-tabs sidebar-mode-tabs" role="tablist" aria-label="Search type">
+              <button id="homeTab" type="button" class="tab-button active sidebar-option icon-home" data-mode="home" role="tab" aria-selected="true">Home</button>
+              <div class="sidebar-nav-group">
+                <button id="recordsTab" type="button" class="tab-button sidebar-option icon-records" data-mode="records" role="tab" aria-selected="false">Records</button>
+                <div id="recordWorkspaceTabs" class="record-workspace-tabs sidebar-subtabs hidden" role="tablist" aria-label="Records workspace">
+                  <button id="recordSearchTab" type="button" class="tab-button active sidebar-option icon-search" data-record-workspace-tab="search" role="tab" aria-selected="true">Search</button>
+                  <button id="recordMergeTab" type="button" class="tab-button sidebar-option icon-merge" data-record-workspace-tab="merge" role="tab" aria-selected="false">Merge</button>
+                  <button id="recordStaticGroupTab" type="button" class="tab-button sidebar-option icon-group" data-record-workspace-tab="staticGroup" role="tab" aria-selected="false">Static Group</button>
+                </div>
+              </div>
+              <div class="sidebar-nav-group">
+                <button id="salesRepsTab" type="button" class="tab-button sidebar-option icon-users" data-mode="salesReps" role="tab" aria-selected="false">Sales Reps</button>
+                <div id="salesRepWorkspaceTabs" class="record-workspace-tabs sidebar-subtabs hidden" role="tablist" aria-label="Sales Rep workspace">
+                  <button id="salesRepSearchTab" type="button" class="tab-button active sidebar-option icon-search" data-sales-rep-workspace-tab="search" role="tab" aria-selected="true">Search</button>
+                  <button id="salesRepHybridTab" type="button" class="tab-button sidebar-option icon-hybrid" data-sales-rep-workspace-tab="hybrids" role="tab" aria-selected="false">Hybrid Reps List</button>
+                </div>
+              </div>
+              <button id="territoriesTab" type="button" class="tab-button sidebar-option icon-territory" data-mode="territories" role="tab" aria-selected="false">Territories</button>
+              <button id="eligibilityTab" type="button" class="tab-button sidebar-option icon-shield" data-mode="eligibility" role="tab" aria-selected="false">ROE Checker</button>
+              <div class="sidebar-nav-group">
+                <button id="suiteWorldTab" type="button" class="tab-button sidebar-option icon-suite" data-mode="suiteWorld" role="tab" aria-selected="false">SuiteWorld</button>
+                <div id="suiteWorldWorkspaceTabs" class="record-workspace-tabs sidebar-subtabs suiteworld-workspace-tabs hidden" role="tablist" aria-label="SuiteWorld workspace">
+                  <button id="suiteWorldDupeTab" type="button" class="tab-button active sidebar-option icon-copy" data-suite-world-tab="dupes" role="tab" aria-selected="true">Duplicate Finder</button>
+                  <button id="suiteWorldDomainTab" type="button" class="tab-button sidebar-option icon-domain" data-suite-world-tab="domain" role="tab" aria-selected="false">Domain Search</button>
+                </div>
+              </div>
+              <button id="pitchbookTab" type="button" class="tab-button sidebar-option icon-briefcase" data-mode="pitchbook" role="tab" aria-selected="false">Pitchbook</button>
+            </div>
+          </section>
+
+          <section class="sidebar-section update-panel sidebar-update-panel">
+            <div class="panel-heading compact">
+              <h2>Updates</h2>
+              <span id="appVersion" class="readonly-pill">v...</span>
+            </div>
+            <div class="actions stacked">
+              <button id="checkUpdateButton" type="button" class="secondary sidebar-option icon-update">Check for Updates</button>
+              <button id="installUpdateButton" type="button" class="sidebar-option icon-update hidden">Install Update</button>
+            </div>
+            <div id="updateStatus" class="status-box link-status"></div>
+          </section>
+        </aside>
+
+        <div class="content-area">
+          <section class="topbar">
+            <div>
+              <h1 id="appGreetingTitle" class="app-greeting-title"><span id="appGreetingText">Good day</span><span id="appGreetingIcon" class="greeting-icon icon-sun-cloud" aria-hidden="true"></span><span id="appGreetingDateTime" class="app-greeting-datetime"></span></h1>
+              <p id="appGreetingSubtitle" class="muted">Here's what's happening today.</p>
+            </div>
+            <div class="topbar-actions">
+              <div class="session-health-wrap">
+                <button id="sessionHealthToggle" type="button" class="badge neutral session-health-toggle" aria-expanded="false" aria-controls="sessionHealthCard" title="Show session health">
+                  <span class="session-health-icon" aria-hidden="true"></span>
+                  <span id="connectionBadge" class="session-health-label">Session Health</span>
+                  <span class="session-health-connection-dot" aria-hidden="true"></span>
+                  <svg class="session-health-chevron" aria-hidden="true" viewBox="0 0 20 20"><path d="m5 7 5 5 5-5"></path></svg>
+                </button>
+                <div id="sessionHealthCard" class="session-health-card session-health-popover hidden" aria-label="Session Health Monitor">
+                  <div class="session-health-head">
+                    <h3><span class="session-health-icon" aria-hidden="true"></span>Session Health</h3>
+                    <span id="sessionHealthSummary" class="session-health-pill neutral">Idle</span>
+                  </div>
+                  <div class="session-health-list">
+                    <div class="session-health-row neutral" data-health-row="chrome">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong id="healthBrowserLabel">Chrome Debug</strong>
+                      <span id="healthChromeValue">Checking...</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="nscorp">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>NSCORP Login</strong>
+                      <span id="healthNscorpValue">Checking...</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="main">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>Search/Merge</strong>
+                      <span id="healthMainValue">Idle</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="roe">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>ROE</strong>
+                      <span id="healthRoeValue">Idle</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="suiteworld">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>SuiteWorld</strong>
+                      <span id="healthSuiteWorldValue">Idle</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="territory">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>Territories</strong>
+                      <span id="healthTerritoryValue">Idle</span>
+                    </div>
+                    <div class="session-health-row neutral" data-health-row="staticGroup">
+                      <span class="session-health-dot" aria-hidden="true"></span>
+                      <strong>Static Group</strong>
+                      <span id="healthStaticGroupValue">Idle</span>
+                    </div>
+                  </div>
+                  <div class="session-health-foot">
+                    <span id="healthLastCheck">Not checked yet</span>
+                    <button id="sessionHealthReconnectButton" type="button" class="small-button secondary">Refresh</button>
+                  </div>
+                </div>
+              </div>
+              <label class="theme-picker" for="themeSelect">
+                <span>Themes</span>
+                <select id="themeSelect" name="themeSelect">
+                  <option value="standard">Standard</option>
+                  <option value="lcie">l'Cie</option>
+                  <option value="lucis">Lucis</option>
+                  <option value="soldier">SOLDIER</option>
+                  <option value="command">Ivalice</option>
+                </select>
+              </label>
+              <button id="rightPanelToggle" type="button" class="side-panel-toggle" aria-label="Hide right panel" aria-expanded="true" aria-controls="rightPanel" title="Hide right panel">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+              </button>
+            </div>
+          </section>
+
+          <div class="content-grid">
+        <section class="panel work-panel">
+          <div class="panel-heading work-panel-heading">
+            <div class="workspace-title-block">
+              <h2 id="workspaceTitle" class="work-panel-title">Home</h2>
+              <p id="workspaceSubtitle" class="work-panel-subtitle">Overview of your activity and quick access to Oracle sites.</p>
+            </div>
+          </div>
+
+          <section id="homeWorkspace" class="home-workspace">
+            <section class="home-shortcut-grid" aria-label="Oracle shortcuts">
+              <button type="button" class="home-shortcut-card hcm" data-home-shortcut-url="https://eeho.fa.us2.oraclecloud.com/hcmUI/faces/FuseWelcome?" data-home-shortcut-label="Oracle HCM">
+                <span class="home-shortcut-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <rect x="8" y="9" width="32" height="30" rx="8"></rect>
+                    <circle cx="24" cy="20" r="5"></circle>
+                    <path d="M15 33c2-5 6-8 9-8s7 3 9 8"></path>
+                    <path d="M15 14h5M28 14h5M15 38h18"></path>
+                  </svg>
+                </span>
+                <span class="home-shortcut-label">Oracle HCM</span>
+              </button>
+              <button type="button" class="home-shortcut-card login" data-home-shortcut-url="https://idcs-9dc693e80d9b469480d7afe00e743931.identity.oraclecloud.com/ui/v1/myconsole?root=my-info&amp;my-info=my_profile_security" data-home-shortcut-label="My Login Profile">
+                <span class="home-shortcut-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <rect x="8" y="13" width="32" height="22" rx="4"></rect>
+                    <path d="M16 39h16M20 35h8"></path>
+                    <rect x="21" y="21" width="14" height="10" rx="3"></rect>
+                    <path d="M24 21v-3a4 4 0 0 1 8 0v3"></path>
+                  </svg>
+                </span>
+                <span class="home-shortcut-label">My Login Profile</span>
+              </button>
+              <button type="button" class="home-shortcut-card aria" data-home-shortcut-url="https://people.oracle.com/apex/f?p=8000:1" data-home-shortcut-label="ARIA">
+                <span class="home-shortcut-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="18" r="6"></circle>
+                    <circle cx="14" cy="22" r="4"></circle>
+                    <circle cx="34" cy="22" r="4"></circle>
+                    <path d="M13 35c2-5 6-8 11-8s9 3 11 8"></path>
+                    <path d="M7 34c1-4 4-6 7-6M34 28c3 0 6 2 7 6"></path>
+                  </svg>
+                </span>
+                <span class="home-shortcut-label">ARIA</span>
+              </button>
+              <button type="button" class="home-shortcut-card emp" data-home-shortcut-url="http://mydevice.oracle.com/" data-home-shortcut-label="EMP - EndUser Portal">
+                <span class="home-shortcut-icon" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <rect x="8" y="10" width="30" height="22" rx="5"></rect>
+                    <path d="M18 39h12M24 32v7M15 18h12M15 24h8"></path>
+                    <rect x="29" y="24" width="11" height="11" rx="3"></rect>
+                    <path d="M31 21v3M35 21v3M39 27h3M39 32h3M31 35v3M35 35v3M26 27h3M26 32h3"></path>
+                  </svg>
+                </span>
+                <span class="home-shortcut-label">EMP - EndUser Portal</span>
+              </button>
+            </section>
+            <section class="home-section home-hr-hub-section" aria-label="PH HR Hub">
+              <div class="home-section-head">
+                <div class="home-section-title-line">
+                  <h3><span class="home-section-icon icon-hr-hub" aria-hidden="true"></span>PH HR Hub</h3>
+                  <div id="hrHubStatus" class="status-box inline-status link-status"></div>
+                </div>
+              </div>
+              <div class="hr-hub-tabs" role="tablist" aria-label="PH HR Hub resources">
+                <button type="button" class="hr-hub-tab active" data-hr-hub-tab="bookmarks" role="tab" aria-selected="true" aria-controls="hrHubBookmarks">Bookmarks</button>
+                <button type="button" class="hr-hub-tab" data-hr-hub-tab="benefits" role="tab" aria-selected="false" aria-controls="hrHubBenefits">PH Benefits</button>
+                <button type="button" class="hr-hub-tab" data-hr-hub-tab="payroll" role="tab" aria-selected="false" aria-controls="hrHubPayroll">Payroll</button>
+                <button type="button" class="hr-hub-tab" data-hr-hub-tab="stock" role="tab" aria-selected="false" aria-controls="hrHubStock">Stock Services</button>
+              </div>
+              <div id="hrHubBookmarks" class="hr-hub-panel active" data-hr-hub-panel="bookmarks" role="tabpanel">
+                <button type="button" class="hr-hub-link icon-darwin" data-hr-hub-url="https://idcs-9dc693e80d9b469480d7afe00e743931.identity.oraclecloud.com/fed/v1/idp/initiatesso?providerid=https://ssl2.perquisite.net/rewardcentre/federation" data-hr-hub-label="Darwin">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Darwin</strong><small>Rewards and reimbursements</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-benefits" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Oracle+NetSuite+%28Philippines%29+Benefits+Page" data-hr-hub-label="Benefits Page">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Benefits Page</strong><small>Oracle NetSuite Philippines benefits</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-letter" data-hr-hub-url="https://hrservices.oraclecorp.com/apex/f?p=85500:1:107978721491968:::::&amp;tz=8:00" data-hr-hub-label="COE Requests">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>COE Requests</strong><small>E-Letters portal</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-verify" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Employment+Verifications" data-hr-hub-label="Employment Verifications">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Employment Verifications</strong><small>Process and third-party guidance</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-shield" data-hr-hub-url="https://badge.oraclecorp.com/SAFE" data-hr-hub-label="SAFE">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>SAFE</strong><small>badge.oraclecorp.com</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-care" data-hr-hub-url="https://www.livewell.optum.com/no_access_token_page/eyJ1cmxTdHJpbmciOiIvIiwicGFyYW1TdHJpbmciOiIifQ%3D%3D" data-hr-hub-label="Employee Assistance Program">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Employee Assistance Program</strong><small>24/7 support and resources</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-video" data-hr-hub-url="https://otube.oracle.com/" data-hr-hub-label="ONS PH HR OTube Channel">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>ONS PH HR OTube Channel</strong><small>OTube HR resources</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-dependent" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Dependent+Enrollment" data-hr-hub-label="Dependent Enrollment">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Dependent Enrollment</strong><small>HMO dependent guidance</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-facilities" data-hr-hub-url="https://oracle.sharepoint.com/sites/ref/SitePages/Facilities-Help.aspx" data-hr-hub-label="Facilities Help">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Facilities Help</strong><small>RE&amp;F support portal</small></span>
+                </button>
+              </div>
+              <div id="hrHubBenefits" class="hr-hub-panel" data-hr-hub-panel="benefits" role="tabpanel" hidden>
+                <button type="button" class="hr-hub-link icon-dental" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Dental+Care+-+Maxicare" data-hr-hub-label="Dental Care">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Dental Care</strong><small>Maxicare dental coverage</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-maternity" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Maternity+Care+Benefit" data-hr-hub-label="Maternity Care">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Maternity Care</strong><small>Benefits and reimbursement</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-medical" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Outpatient+Medicine" data-hr-hub-label="Outpatient Medicine">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Outpatient Medicine</strong><small>Medicine reimbursement rules</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-medical" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Outpatient+Benefit+-+Maxicare" data-hr-hub-label="Outpatient Benefit">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Outpatient Benefit</strong><small>Maxicare outpatient coverage</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-medical" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Inpatient+Benefit+-+Maxicare" data-hr-hub-label="Inpatient Benefit">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Inpatient Benefit</strong><small>Confinement and admission coverage</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-emergency" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Emergency+Care" data-hr-hub-label="Emergency Care">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Emergency Care</strong><small>Emergency HMO guidelines</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-time" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Teleconsultation+Services" data-hr-hub-label="Teleconsultation Services">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Teleconsultation Services</strong><small>Doctor Anywhere and Maxicare</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-escalation" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Escalation+Process" data-hr-hub-label="Escalation Process">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Escalation Process</strong><small>How to escalate benefit concerns</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-doc" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Philhealth" data-hr-hub-label="PhilHealth Docs">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>PhilHealth Docs</strong><small>Forms and contribution docs</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-dependent" data-hr-hub-url="https://confluence.oraclecorp.com/confluence/display/ONPBP/Dependent+Enrollment" data-hr-hub-label="Dependent Enrollment">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Dependent Enrollment</strong><small>Enrollment and supporting docs</small></span>
+                </button>
+              </div>
+              <div id="hrHubPayroll" class="hr-hub-panel" data-hr-hub-panel="payroll" role="tabpanel" hidden>
+                <button type="button" class="hr-hub-link icon-time" data-hr-hub-url="https://eeho.fa.us2.oraclecloud.com/hcmUI/faces/FuseWelcome" data-hr-hub-label="Fusion Time and Labor">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Fusion Time and Labor</strong><small>Time reporting and absences</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-ticket" data-hr-hub-url="https://apex.oraclecorp.com/pls/apex/f?p=25361:1:12551328089039" data-hr-hub-label="PQT">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>PQT</strong><small>Payroll queries and requests</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-payroll" data-hr-hub-url="https://global-ebusiness.oraclecorp.com/OA_HTML/OA.jsp?OAFunc=OANEWHOMEPAGE" data-hr-hub-label="Manage Payroll Payments">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Payroll Payments</strong><small>Employee Self Service</small></span>
+                </button>
+                <button type="button" class="hr-hub-link icon-doc" data-hr-hub-url="https://oracle-my.sharepoint.com/:w:/p/john_michael_silva/EYK21mfPW3pIvvcgKdzkSmoByW-M8SAY0831z2PtJJCtug?e=9KgDWh" data-hr-hub-label="FTL FAQ">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>FTL FAQ</strong><small>Common time reporting questions</small></span>
+                </button>
+              </div>
+              <div id="hrHubStock" class="hr-hub-panel" data-hr-hub-panel="stock" role="tabpanel" hidden>
+                <button type="button" class="hr-hub-link icon-stock" data-hr-hub-url="https://myhelp.oracle.com/app/answers/answer_view/a_id/1012719/loc/en_US" data-hr-hub-label="HCM Name Change Instructions">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>HCM Name Change</strong><small>Update HCM before Stock Services</small></span>
+                </button>
+                <a class="hr-hub-link icon-mail" href="mailto:stock_us@oracle.com" aria-label="Email Stock Services">
+                  <span class="hr-hub-link-icon" aria-hidden="true"></span>
+                  <span class="hr-hub-link-text"><strong>Stock Services Email</strong><small>stock_us@oracle.com</small></span>
+                </a>
+              </div>
+            </section>
+            <section class="home-section recent-records-section">
+              <div class="home-section-head recent-records-head">
+                <div class="home-section-title-line">
+                  <h3><span class="home-section-icon icon-search" aria-hidden="true"></span>Recent Records</h3>
+                  <div id="recentRecordsStatus" class="status-box inline-status"></div>
+                </div>
+                <button id="homeRefreshRecentButton" type="button" class="small-button secondary icon-only refresh-recent-button" title="Refresh Recent Records" aria-label="Refresh Recent Records">
+                  <svg class="refresh-icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M20 6v5h-5"></path>
+                    <path d="M4 18v-5h5"></path>
+                    <path d="M6.2 8.2A7.2 7.2 0 0 1 18.8 10.5L20 11"></path>
+                    <path d="M17.8 15.8A7.2 7.2 0 0 1 5.2 13.5L4 13"></path>
+                  </svg>
+                </button>
+              </div>
+              <div id="recentRecordsList" class="recent-record-list">
+                <div class="empty-state">
+                  <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                  <span>Recent NSCORP records will appear here.</span>
+                </div>
+              </div>
+            </section>
+            <section class="home-section activity-feed-section">
+              <div class="home-section-head">
+                <h3><span class="home-section-icon icon-pulse" aria-hidden="true"></span>Activity Feed</h3>
+                <button id="activityClearButton" type="button" class="small-button secondary icon-only clear-feed-button" title="Clear activity feed" aria-label="Clear activity feed">
+                  <svg class="clear-broom-icon" aria-hidden="true" viewBox="0 0 64 64">
+                    <circle class="clear-broom-bg" cx="32" cy="32" r="29"></circle>
+                    <path class="clear-broom-sparkle" d="M18 12l2.2 5.5L26 20l-5.8 2.3L18 28l-2.2-5.7L10 20l5.8-2.5Z"></path>
+                    <rect class="clear-broom-handle" x="37" y="8" width="8" height="34" rx="4" transform="rotate(34 41 25)"></rect>
+                    <rect class="clear-broom-band" x="25" y="30" width="26" height="9" rx="4.5" transform="rotate(34 38 34.5)"></rect>
+                    <path class="clear-broom-head" d="M16 32 39 47 33 58C25.2 55.8 18.8 52 13 46Z"></path>
+                    <path class="clear-broom-bristle" d="M17 45c5.4 1.4 11.1 0.4 17-3"></path>
+                    <path class="clear-broom-bristle" d="M21 51c3.8 0.1 7.5-1 11-3.4"></path>
+                  </svg>
+                </button>
+              </div>
+              <div id="activityFeedList" class="activity-feed-list">
+                <div class="empty-state">
+                  <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                  <span>Companion app activity will appear here.</span>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <div id="recordSearchWorkspace" class="record-workspace-panel hidden">
+            <form id="searchForm" class="search-row">
+              <label class="search-field">
+                <span id="searchLabel" class="field-label-hidden">Records Search</span>
+                <div class="search-input-shell">
+                  <input id="searchText" name="searchText" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="searchHistory" placeholder="Type any number, text, URL, or zi:&lt;ZoomInfo ID&gt;" value="288693">
+                  <div id="searchHistory" class="search-history hidden" role="listbox"></div>
+                </div>
+                <span class="search-help" tabindex="0" title="Type zi:&lt;ZoomInfo Company ID&gt; to search by ZoomInfo Company ID. Example: zi:348068935">Search using ZoomInfo?</span>
+              </label>
+              <button id="searchButton" type="submit">Search</button>
+            </form>
+
+            <div id="lookupStatus" class="status-box"></div>
+
+            <div class="results-wrap">
+              <table>
+                <thead>
+                  <tr id="resultsHead">
+                    <th>Type</th>
+                    <th>Internal ID</th>
+                    <th>Title</th>
+                    <th>Snippet</th>
+                    <th class="actions-column" aria-label="Actions"></th>
+                  </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+              </table>
+            </div>
+
+            <div class="detail-heading">
+              <div class="detail-title-line">
+                <button id="detailCollapseButton" type="button" class="detail-collapse-button" aria-expanded="true" aria-controls="summary territorySection" title="Collapse view" aria-label="Collapse view">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+                <h3 id="detailTitle">Selected Record</h3>
+              </div>
+              <div class="detail-actions">
+                <span id="selectedRecordHint">Use View to load details here.</span>
+                <button id="extractSalesRepButton" type="button" class="small-button hidden">Extract</button>
+                <button id="openExtractFolderButton" type="button" class="small-button secondary hidden">Open Folder</button>
+              </div>
+            </div>
+            <div id="summary" class="summary-grid"></div>
+            <div id="territorySection" class="territory-section hidden">
+              <div class="territory-head">
+                <div>
+                  <h4>Territories</h4>
+                </div>
+                <span id="territoryCount" class="readonly-pill"></span>
+              </div>
+              <div id="territoryList" class="territory-list"></div>
+            </div>
+          </div>
+
+          <section id="mergeWorkspace" class="merge-workspace hidden">
+            <div class="merge-head">
+              <div>
+                <h3>Merge Assistant</h3>
+              </div>
+              <span id="mergeCount" class="readonly-pill">0 duplicates</span>
+            </div>
+            <form id="mergeForm" class="merge-form">
+              <div class="merge-grid">
+                <label>
+                  <span>Primary Record</span>
+                  <input id="mergePrimaryInput" name="mergePrimaryInput" autocomplete="off" placeholder="Primary Internal ID, ID, or URL">
+                  <span class="merge-load-note">Load the records first, then review the comparison table below.</span>
+                </label>
+                <button id="mergeFlipButton" type="button" class="merge-flip-button" title="Flip primary with first duplicate" aria-label="Flip primary with first duplicate">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.4 6.4L3 16"></path><path d="M3 21v-5h5"></path><path d="M3 12a9 9 0 0 1 15.4-6.4L21 8"></path><path d="M21 3v5h-5"></path></svg>
+                </button>
+                <label>
+                  <span>Duplicate Records</span>
+                  <textarea id="mergeDuplicateInput" name="mergeDuplicateInput" rows="3" placeholder="Paste duplicate Internal IDs, IDs, or URLs. One per line."></textarea>
+                </label>
+              </div>
+              <div class="merge-actions">
+                <div id="mergeStatus" class="status-box inline-status merge-inline-status"></div>
+                <button id="mergeLoadButton" type="submit">Load Merge Review</button>
+              </div>
+            </form>
+            <div id="mergePrimaryCard" class="merge-primary-card"></div>
+            <div id="mergeDuplicateList" class="merge-duplicate-list"></div>
+            <div class="merge-review-tools">
+              <label class="merge-confirm">
+                <input id="mergeReviewCheckbox" type="checkbox" disabled>
+                  <span>I reviewed these duplicates. <strong>Merging is permanent and cannot be undone.</strong> Tick to enable <strong>Merge Page</strong>.</span>
+              </label>
+              <div id="mergeContactCheck" class="merge-contact-check hidden">
+                <div>
+                  <strong>Contact Subsidiary Check</strong>
+                  <span id="mergeContactHint">Optional check for same-name contacts with different subsidiaries.</span>
+                </div>
+                <button id="mergeContactCheckButton" type="button" class="small-button secondary">Check Contacts</button>
+              </div>
+            </div>
+            <div id="mergeContactResults" class="merge-contact-results hidden"></div>
+          </section>
+
+          <section id="staticGroupWorkspace" class="static-group-workspace hidden">
+            <div class="merge-head static-group-head">
+              <div class="static-group-mode-switch" role="group" aria-label="Static group action">
+                <button type="button" id="staticGroupCreateModeButton" class="small-button secondary active">Create New</button>
+                <button type="button" id="staticGroupAppendModeButton" class="small-button secondary">Add to Existing</button>
+              </div>
+              <div class="static-group-head-metrics">
+                <span id="staticGroupCount" class="readonly-pill">0 records</span>
+                <span id="staticGroupElapsed" class="readonly-pill elapsed-pill">Elapsed: 00:00</span>
+              </div>
+            </div>
+            <form id="staticGroupForm" class="static-group-form">
+              <label>
+                <span id="staticGroupNameLabel">Static Group Name</span>
+                <input id="staticGroupNameInput" name="staticGroupNameInput" autocomplete="off" placeholder="Enter static group name">
+              </label>
+              <label id="staticGroupExistingGroupField" class="hidden">
+                <span>Existing Static Group URL or Internal ID</span>
+                <input id="staticGroupExistingGroupInput" name="staticGroupExistingGroupInput" autocomplete="off" placeholder="Paste the existing group URL or internal ID">
+              </label>
+              <label>
+                <span>Records to Add</span>
+                <textarea id="staticGroupRecordInput" name="staticGroupRecordInput" rows="8" placeholder="Paste record URLs, Internal IDs, or IDs. One per line."></textarea>
+              </label>
+              <div id="staticGroupStatus" class="status-box static-group-status-row" aria-live="polite"></div>
+              <div class="static-group-actions">
+                <label class="merge-confirm static-group-confirm">
+                  <input id="staticGroupConfirmCheckbox" type="checkbox" disabled>
+                  <span id="staticGroupConfirmText">I reviewed the records and want to proceed in creating the static group.</span>
+                </label>
+                <button id="staticGroupCreateButton" type="button" disabled>Create Static Group</button>
+              </div>
+            </form>
+            <div class="eligibility-results-wrap static-group-results-wrap">
+              <table class="eligibility-table static-group-table">
+                <thead>
+                  <tr>
+                    <th>Input</th>
+                    <th>Internal ID</th>
+                    <th>ID + Name</th>
+                    <th>Status</th>
+                    <th>Sales Rep</th>
+                    <th>Inactive</th>
+                    <th>Result</th>
+                    <th class="row-action-header" aria-label="Remove"></th>
+                  </tr>
+                </thead>
+                <tbody id="staticGroupResultsBody">
+                  <tr>
+                    <td colspan="8" class="empty empty-state-cell">
+                      <div class="empty-state">
+                        <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                        <span>No records added yet.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="static-group-final-actions">
+              <div class="static-group-create-actions">
+                <button id="staticGroupRetrySkippedButton" type="button" class="small-button secondary hidden" disabled>Retry Skipped</button>
+              </div>
+            </div>
+            <section class="home-section static-group-history-section">
+              <div class="home-section-head">
+                <h3><span class="home-section-icon icon-copy" aria-hidden="true"></span>Created Groups</h3>
+                <button id="staticGroupHistoryRefreshButton" type="button" class="small-button secondary">Refresh</button>
+              </div>
+              <div id="staticGroupHistoryList" class="static-group-history-list">
+                <div class="empty-state">
+                  <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                  <span>No static groups created from this app yet.</span>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <section id="dupeWorkspace" class="dupe-workspace hidden">
+            <div class="eligibility-head">
+              <div>
+                <h3>Duplicate Finder</h3>
+              </div>
+              <div class="dupe-head-actions">
+                <button id="dupeExportButton" type="button" class="small-button secondary" disabled>Extract</button>
+                <button id="dupeOpenExtractFolderButton" type="button" class="small-button secondary hidden">Open Folder</button>
+                <button id="dupeCopyFhButton" type="button" class="small-button secondary" disabled>Copy F-H</button>
+                <span id="dupeCount" class="readonly-pill">0 records</span>
+                <span id="dupeElapsed" class="readonly-pill elapsed-pill">Elapsed: 00:00</span>
+              </div>
+            </div>
+            <form id="dupeForm" class="eligibility-form">
+              <label>
+                <span>Record List</span>
+                <textarea id="dupeInput" name="dupeInput" rows="8" placeholder="Paste URLs, Internal IDs, IDs, or names. One per line."></textarea>
+              </label>
+              <div class="eligibility-actions batch-actions">
+                <button id="dupeStopButton" type="button" class="small-button secondary stop-button hidden" title="Stop Duplicate Finder">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>
+                  <span>Stop</span>
+                </button>
+                <button id="dupeFindButton" type="submit">Find Masters</button>
+              </div>
+            </form>
+            <div id="dupeStatus" class="status-box"></div>
+            <div class="eligibility-results-wrap">
+              <table class="eligibility-table dupe-table">
+                <thead>
+                  <tr>
+                    <th>Input Record</th>
+                    <th>Potential Master</th>
+                    <th>Column F: Master Record</th>
+                    <th>Column G: Status / Stage</th>
+                    <th>Column H: Sales Rep</th>
+                    <th>Reason</th>
+                  </tr>
+                </thead>
+                <tbody id="dupeResultsBody">
+                  <tr>
+                    <td colspan="6" class="empty empty-state-cell">
+                      <div class="empty-state">
+                        <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                        <span>No duplicate finder results yet.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="domainWorkspace" class="dupe-workspace hidden">
+            <div class="eligibility-head">
+              <div>
+                <h3>Domain Search</h3>
+              </div>
+              <div class="dupe-head-actions">
+                <button id="domainExportButton" type="button" class="small-button secondary" disabled>Extract</button>
+                <button id="domainOpenExtractFolderButton" type="button" class="small-button secondary hidden">Open Folder</button>
+                <span id="domainCount" class="readonly-pill">0 domains</span>
+                <span id="domainElapsed" class="readonly-pill elapsed-pill">Elapsed: 00:00</span>
+              </div>
+            </div>
+            <form id="domainForm" class="eligibility-form">
+              <label>
+                <span>Domain List</span>
+                <textarea id="domainInput" name="domainInput" rows="8" placeholder="Paste websites or email domains. One per line."></textarea>
+              </label>
+              <div class="eligibility-actions batch-actions">
+                <button id="domainStopButton" type="button" class="small-button secondary stop-button hidden" title="Stop Domain Search">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>
+                  <span>Stop</span>
+                </button>
+                <button id="domainSearchButton" type="submit">Search Domains</button>
+              </div>
+            </form>
+            <div id="domainStatus" class="status-box"></div>
+            <div class="eligibility-results-wrap">
+              <table class="eligibility-table dupe-table domain-table">
+                <thead>
+                  <tr>
+                    <th>Input</th>
+                    <th>Search Domain</th>
+                    <th>Potential Master</th>
+                    <th>Column F: Master Record</th>
+                    <th>Column G: Status / Stage</th>
+                    <th>Column H: Sales Rep</th>
+                    <th>Reason</th>
+                  </tr>
+                </thead>
+                <tbody id="domainResultsBody">
+                  <tr>
+                    <td colspan="7" class="empty empty-state-cell">
+                      <div class="empty-state">
+                        <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                        <span>No domain search results yet.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="pitchbookWorkspace" class="dupe-workspace pitchbook-workspace hidden">
+            <div class="eligibility-head">
+              <div>
+                <h3>Pitchbook</h3>
+                <p class="muted">Review PE/VC fields across a Static Group.</p>
+              </div>
+              <div class="dupe-head-actions">
+                <span id="pitchbookCount" class="readonly-pill">0 records</span>
+              </div>
+            </div>
+            <form id="pitchbookForm" class="eligibility-form">
+              <label>
+                <span>Static Group</span>
+                <input id="pitchbookGroupInput" name="pitchbookGroupInput" autocomplete="off" placeholder="Paste the direct Static Group URL">
+              </label>
+              <div class="eligibility-actions batch-actions">
+                <button id="pitchbookLoadButton" type="submit">Load Group Records</button>
+              </div>
+            </form>
+            <div id="pitchbookStatus" class="status-box"></div>
+            <div class="eligibility-results-wrap">
+              <table class="eligibility-table pitchbook-table">
+                <thead>
+                  <tr>
+                    <th>Internal ID</th>
+                    <th>ID + Name</th>
+                    <th>Private Equity/Venture Capital Firm</th>
+                    <th>Additional PE/VC</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="pitchbookResultsBody">
+                  <tr>
+                    <td colspan="5" class="empty empty-state-cell">
+                      <div class="empty-state">
+                        <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                        <span>No Pitchbook group records loaded yet.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="territoryWorkspace" class="territory-workspace hidden">
+            <div class="eligibility-head territory-toolbar">
+              <div>
+                <h3>Territories</h3>
+              </div>
+              <div class="dupe-head-actions territory-head-actions">
+                <button id="territoryRefreshButton" type="button" class="small-button secondary">Refresh</button>
+                <div id="territoryBrowserStatus" class="status-box inline-status territory-inline-status"></div>
+              </div>
+            </div>
+            <div class="territory-update-panel">
+              <form id="territorySalesRepForm" class="territory-sales-rep-form">
+                <label>
+                  <span>Sales Rep</span>
+                  <div class="search-input-shell">
+                    <input id="territorySalesRepInput" name="territorySalesRepInput" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="territorySalesRepHistory" placeholder="Search a Sales Rep">
+                    <div id="territorySalesRepHistory" class="search-history hidden" role="listbox"></div>
+                  </div>
+                </label>
+                <button id="territorySalesRepSearchButton" type="submit">Search</button>
+              </form>
+              <div id="territorySalesRepStatus" class="status-box inline-status territory-update-status"></div>
+              <div id="territorySalesRepResults" class="territory-inline-results">
+                <div class="empty-state territory-empty-state territory-inline-empty">
+                  <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                  <span>Search for a Sales Rep to start.</span>
+                </div>
+              </div>
+              <div id="territorySelectedPanel" class="territory-selected-panel hidden">
+                <div class="territory-selected-head">
+                  <div>
+                    <span>Selected Sales Rep</span>
+                    <strong id="territorySelectedName">---</strong>
+                    <em id="territorySelectedMeta">---</em>
+                  </div>
+                  <span id="territorySelectedCount" class="readonly-pill">0 territories</span>
+                </div>
+                <div class="territory-browser-title">Current Territories</div>
+                <div id="territorySelectedList" class="territory-selected-list"></div>
+                <div class="territory-change-head">
+                  <div class="territory-browser-title">Territory Changes Summary</div>
+                  <span id="territoryChangeCount" class="readonly-pill">0 pending</span>
+                </div>
+                <div id="territoryChangeSummary" class="territory-change-summary">
+                  <div class="empty-state territory-empty-state territory-inline-empty">
+                    <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                    <span>No pending territory changes.</span>
+                  </div>
+                </div>
+                <div class="territory-review-row">
+                  <label class="merge-confirm territory-confirm">
+                    <input id="territoryConfirmCheckbox" type="checkbox" disabled>
+                    <span>I confirm these territory changes were reviewed and should be applied to the selected Sales Rep.</span>
+                  </label>
+                  <button id="territoryRunButton" type="button" disabled>Run Territory Update</button>
+                </div>
+                <div id="territoryRunResults"></div>
+              </div>
+            </div>
+            <div class="territory-filter-grid">
+              <label class="territory-filter-wide">
+                <span>General Filter</span>
+                <input id="territoryGeneralFilter" name="territoryGeneralFilter" autocomplete="off" placeholder="Type any territory text">
+              </label>
+              <label>
+                <span>Vertical</span>
+                <select id="territoryVerticalFilter" name="territoryVerticalFilter">
+                  <option value="">All verticals</option>
+                  <option value="BizSvcs">BizSvcs</option>
+                  <option value="C&E">C&amp;E</option>
+                  <option value="ConsSvcs">ConsSvcs</option>
+                  <option value="H&H">H&amp;H</option>
+                  <option value="PROD">PROD</option>
+                  <option value="SDR">SDR</option>
+                  <option value="SFT">SFT</option>
+                </select>
+              </label>
+              <label>
+                <span>Tier</span>
+                <select id="territoryTierFilter" name="territoryTierFilter">
+                  <option value="">All tiers</option>
+                  <option value="MM">MM</option>
+                  <option value="CORP">CORP</option>
+                  <option value="ENT">ENT</option>
+                </select>
+              </label>
+              <label>
+                <span>Region</span>
+                <select id="territoryRegionFilter" name="territoryRegionFilter"></select>
+              </label>
+            </div>
+            <div class="territory-browser-head">
+              <div class="territory-browser-title">Territory List</div>
+              <span id="territoryBrowserCount" class="readonly-pill">0 territories</span>
+            </div>
+            <div id="territoryBrowserList" class="territory-browser-list">
+              <div class="empty-state territory-empty-state">
+                <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                <span>Territories will load here.</span>
+              </div>
+            </div>
+          </section>
+
+          <section id="eligibilitySection" class="eligibility-section hidden">
+            <div class="eligibility-head">
+              <div>
+                <h3>ROE Checker</h3>
+              </div>
+              <div class="dupe-head-actions">
+                <button id="eligibilityExportButton" type="button" class="small-button secondary" disabled>Extract</button>
+                <button id="eligibilityOpenExtractFolderButton" type="button" class="small-button secondary hidden">Open Folder</button>
+                <span id="eligibilityCount" class="readonly-pill">0 records</span>
+                <span id="eligibilityElapsed" class="readonly-pill elapsed-pill">Elapsed: 00:00</span>
+              </div>
+            </div>
+            <form id="eligibilityForm" class="eligibility-form">
+              <label>
+                <span>Lead List</span>
+                <textarea id="eligibilityLeadInput" name="eligibilityLeadInput" rows="8" placeholder="Paste URLs, Internal IDs, IDs, or names"></textarea>
+              </label>
+              <div class="eligibility-actions batch-actions">
+                <button id="eligibilityStopButton" type="button" class="small-button secondary stop-button hidden" title="Stop ROE Checker">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>
+                  <span>Stop</span>
+                </button>
+                <button id="verifyEligibilityButton" type="submit">Verify</button>
+              </div>
+            </form>
+            <div id="eligibilityStatus" class="status-box"></div>
+            <div class="eligibility-results-wrap">
+              <table class="eligibility-table">
+                <thead>
+                  <tr>
+                    <th>Internal ID</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Industry / Annual Revenue</th>
+                    <th>Sales Rep / LSAD Date</th>
+                    <th>State/Region</th>
+                    <th>Eligibility</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="eligibilityResultsBody">
+                  <tr>
+                    <td colspan="8" class="empty empty-state-cell">
+                      <div class="empty-state">
+                        <span class="empty-state-icon" aria-hidden="true"><span></span><span></span></span>
+                        <span>No eligibility results yet.</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <aside id="rightPanel" class="right-column">
+          <section class="panel quick-links-panel">
+            <div class="panel-heading compact">
+              <h2>Quick Links</h2>
+              <div class="heading-actions">
+                <button type="button" class="mini-button icon-button" data-link-reorder-toggle="quickLinks" aria-label="Reorder quick links" title="Reorder">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7h14"></path><path d="M7 12h14"></path><path d="M7 17h14"></path><path d="M3 7h.01"></path><path d="M3 12h.01"></path><path d="M3 17h.01"></path></svg>
+                </button>
+                <button type="button" class="mini-button icon-button" data-link-add="quickLinks" aria-label="Add quick link" title="Add">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div id="quickLinkList" class="quick-link-list"></div>
+            <form class="link-editor hidden" data-link-editor="quickLinks">
+              <input type="hidden" name="id">
+              <label>
+                <span>Label</span>
+                <input name="label" autocomplete="off">
+              </label>
+              <label>
+                <span>URL</span>
+                <input name="url" autocomplete="off">
+              </label>
+              <div class="link-editor-actions">
+                <button type="submit" class="small-button">Save</button>
+                <button type="button" class="small-button secondary" data-link-cancel>Cancel</button>
+              </div>
+            </form>
+            <div id="quickLinkStatus" class="status-box link-status"></div>
+          </section>
+
+          <section class="panel csv-panel">
+            <div class="panel-heading compact">
+              <h2>CSV</h2>
+              <div class="heading-actions">
+                <button type="button" class="mini-button icon-button" data-link-reorder-toggle="csvLinks" aria-label="Reorder CSV links" title="Reorder">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7h14"></path><path d="M7 12h14"></path><path d="M7 17h14"></path><path d="M3 7h.01"></path><path d="M3 12h.01"></path><path d="M3 17h.01"></path></svg>
+                </button>
+                <button type="button" class="mini-button icon-button" data-link-add="csvLinks" aria-label="Add CSV link" title="Add">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
+              </div>
+            </div>
+            <div id="csvLinkList" class="quick-link-list"></div>
+            <form class="link-editor hidden" data-link-editor="csvLinks">
+              <input type="hidden" name="id">
+              <label>
+                <span>Label</span>
+                <input name="label" autocomplete="off">
+              </label>
+              <label>
+                <span>URL</span>
+                <input name="url" autocomplete="off">
+              </label>
+              <div class="link-editor-actions">
+                <button type="submit" class="small-button">Save</button>
+                <button type="button" class="small-button secondary" data-link-cancel>Cancel</button>
+              </div>
+            </form>
+            <div id="csvLinkStatus" class="status-box link-status"></div>
+          </section>
+
+          <section class="panel sticky-notes-panel">
+            <div class="panel-heading compact">
+              <h2>Stickies</h2>
+              <div class="heading-actions">
+                <button id="stickyNotesClearButton" type="button" class="mini-button icon-button" aria-label="Clear sticky notes" title="Clear sticky notes">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 21-4-4L16 4a2.8 2.8 0 0 1 4 4L8 20"></path><path d="M14 6 18 10"></path><path d="M5 19h8"></path></svg>
+                </button>
+              </div>
+            </div>
+            <textarea id="stickyNotesInput" class="sticky-notes-input" spellcheck="false" placeholder="Take a note..."></textarea>
+            <div class="sticky-notes-footer">
+              <span id="stickyNotesSavedAt">Saved locally</span>
+              <span>Browser only</span>
+            </div>
+          </section>
+
+        </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="appToast" class="app-toast hidden" role="status" aria-live="polite"></div>
+    <script src="app.js?v=ui-v230-recent-feed-alignment-20260902"></script>
+  </body>
+</html>

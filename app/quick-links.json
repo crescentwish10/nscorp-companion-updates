@@ -1,0 +1,76 @@
+{
+  "quickLinks": [
+    {
+      "id": "territory-list",
+      "label": "Territory List",
+      "url": "https://nlcorp.app.netsuite.com/app/crm/sales/salesterritorylist.nl?whence="
+    },
+    {
+      "id": "duplicate-results",
+      "label": "Duplicate Results",
+      "url": "https://nlcorp.app.netsuite.com/app/common/entity/duplicatemanagement/dupejob.nl?whence="
+    },
+    {
+      "id": "static-group-creation",
+      "label": "Static Group Creation",
+      "url": "https://nlcorp.app.netsuite.com/app/crm/common/crmgroup.nl?savedsearch=-1&grouptype=CustJob&dynamic=F"
+    },
+    {
+      "id": "change-sales-rep",
+      "label": "Change Sales Rep",
+      "url": "https://nlcorp.app.netsuite.com/app/common/bulk/bulkresults.nl?searchid=1314635"
+    },
+    {
+      "id": "change-rep-tal",
+      "label": "Change Rep + TAL",
+      "url": "https://nlcorp.app.netsuite.com/app/common/bulk/bulkresults.nl?_entryformparams=null&searchid=1306473&refresh=&whence="
+    },
+    {
+      "id": "add-secondary-sales-rep",
+      "label": "Add Secondary Sales Rep",
+      "url": "https://nlcorp.app.netsuite.com/app/common/bulk/bulkop.nl?id=444216&e=T&_entryformparams="
+    },
+    {
+      "id": "oppportunity-transfer",
+      "label": "Oppportunity Transfer",
+      "url": "https://nlcorp.app.netsuite.com/app/common/bulk/bulkop.nl?e=T&id=900809&_entryformparams=&whence="
+    },
+    {
+      "id": "zane-install-base-for-anca",
+      "label": "Zane Install Base for Anca",
+      "url": "https://nlcorp.app.netsuite.com/app/common/search/search.nl?e=T&cu=T&id=584597&whence="
+    },
+    {
+      "id": "fy27-territory-changes",
+      "label": "FY27 Territory Changes",
+      "url": "https://oracle-my.sharepoint.com/personal/jon_atienza_oracle_com/_layouts/15/doc.aspx?sourcedoc={2ec30456-64f2-4be4-9796-203ae6b4efd1}&action=edit"
+    }
+  ],
+  "csvLinks": [
+    {
+      "id": "csv-import-status",
+      "label": "CSV Results",
+      "url": "https://nlcorp.app.netsuite.com/app/setup/upload/csv/csvstatus.nl?whence=&siaT=1780364848914&siaWhc=%2Fapp%2Fsetup%2Fassistants%2Fnsimport%2Fimportassistant.nl&siaNv=ct2"
+    },
+    {
+      "id": "sales-rep-transfer",
+      "label": "Sales Rep Transfer",
+      "url": "https://nlcorp.app.netsuite.com/app/setup/assistants/nsimport/importassistant.nl?recid=9784&new=T"
+    },
+    {
+      "id": "static-group-creation",
+      "label": "Add Leads to Group",
+      "url": "https://nlcorp.app.netsuite.com/app/setup/assistants/nsimport/importassistant.nl?recid=10046&new=T"
+    },
+    {
+      "id": "lead-creation",
+      "label": "Lead Creation",
+      "url": "https://nlcorp.app.netsuite.com/app/setup/assistants/nsimport/importassistant.nl?recid=6813&new=T"
+    },
+    {
+      "id": "task-update",
+      "label": "Task Update",
+      "url": "https://nlcorp.app.netsuite.com/app/setup/assistants/nsimport/importassistant.nl?recid=10401&new=T"
+    }
+  ]
+}
