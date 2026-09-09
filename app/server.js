@@ -66,7 +66,7 @@ const EXTRACT_FIELDS = [
   { label: "Sales Rep", key: "salesRep", source: "salesrep" },
   { label: "LSAD Date (Custom)", key: "lsadDate", source: "custentity_lsad_date" },
   { label: "Partner", key: "partner", source: "partner" },
-  { label: "Industry (Custom)", key: "industry", source: "custentity_gtm_industry_family" },
+  { label: "Industry (Custom)", key: "industry", source: "custentity_gtm_industry" },
   { label: "Industry Subgroup (Custom)", key: "industrySubgroup", source: "custentity_gtm_industry_subgroup" },
   { label: "Annual Revenue (Custom)", key: "annualRevenue", source: "custentity159" },
   { label: "Web Address", key: "webAddress", source: "url" },
@@ -2950,6 +2950,7 @@ function recordParseExpression(internalId, options = {}) {
           zoomInfoIndustry: fieldValue(doc, "custentity_zoominfo_industry", ["ZoomInfo Industry"]),
           zoomInfoSubIndustry: fieldValue(doc, "custentity_zoominfo_subindustry", ["ZoomInfo SubIndustry", "ZoomInfo Subindustry", "ZoomInfo Sub Industry"]),
           industry: firstValue(
+            fieldValue(doc, "custentity_gtm_industry", ["Industry", "Industry (Custom)"]),
             fieldValue(doc, "custentity_gtm_industry_family", ["Industry", "Industry (Custom)"]),
             fieldValue(doc, "custentity_industry", ["Industry", "Industry (Custom)"])
           ),
@@ -3084,6 +3085,7 @@ function searchExpression(query, options = {}) {
         email: fieldValue(doc, "email", ["Email"]),
         webAddress: fieldValue(doc, "url", ["Web Address"]),
         industry: firstValue(
+          fieldValue(doc, "custentity_gtm_industry", ["Industry", "Industry (Custom)"]),
           fieldValue(doc, "custentity_gtm_industry_family", ["Industry", "Industry (Custom)"]),
           fieldValue(doc, "custentity_industry", ["Industry", "Industry (Custom)"])
         ),
