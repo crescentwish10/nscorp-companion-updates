@@ -1,6 +1,6 @@
 {
-  "version": "2.4.8",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v2.4.8/NSCORP_Companion_QA_Package.zip",
+  "version": "2.4.9",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v2.4.9/NSCORP_Companion_QA_Package.zip",
   "fileName": "NSCORP_Companion_QA_Package.zip",
-  "notes": "ROE same-rep handling, shared Customer Search queue, and Firefox stability fixes."
+  "notes": "PH HR Hub theme readability improvements and Apple Silicon Mac package support."
 }
