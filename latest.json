@@ -1,13 +1,13 @@
 {
-  "version": "3.2.1",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.2.1/NSCORP_Companion_Windows_v3.2.1.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.2.1.zip",
+  "version": "3.3.0",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.0/NSCORP_Companion_Windows_v3.3.0.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.3.0.zip",
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.2.1/NSCORP_Companion_Windows_v3.2.1.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.2.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.0/NSCORP_Companion_Windows_v3.3.0.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.3.0.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.2.1/NSCORP_Companion_Mac_Apple_Silicon_v3.2.1.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.2.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.0/NSCORP_Companion_Mac_Apple_Silicon_v3.3.0.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.3.0.zip"
   }
 }
