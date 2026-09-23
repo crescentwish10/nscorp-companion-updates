@@ -1,18 +1,23 @@
 {
-  "version": "3.3.2",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Windows_v3.3.2.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.3.2.zip",
+  "version": "3.4.0",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Windows_v3.4.0.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.4.0.zip",
   "changelog": [
-    "Added a centered, theme-aware update window with a What's New? changelog.",
-    "Update notes now come from the release manifest and render inside the update window.",
-    "Preserved the existing Install Update and Later behavior."
+    "Added a theme-aware Help Center with searchable topics, article outlines, back navigation, and offline access.",
+    "Improved Help, Settings, and ROE controls across themes, including Standard navigation highlights.",
+    "Fixed Bulk Transfer duplicate-warning handling and kept each record's result independent.",
+    "Improved Static Group additions to wait for each save, recognize existing members beyond the first 100, and preserve partial progress.",
+    "Static Group history refresh now updates names as well as member counts.",
+    "Restart App now fully relaunches the app to load current changes.",
+    "Restored the required runtime files in the Apple Silicon package.",
+    "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Windows_v3.3.2.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.3.2.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Windows_v3.4.0.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.4.0.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Mac_Apple_Silicon_v3.3.2.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.3.2.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Mac_Apple_Silicon_v3.4.0.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.4.0.zip"
   }
 }
