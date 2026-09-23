@@ -1,13 +1,18 @@
 {
-  "version": "3.3.1",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.1/NSCORP_Companion_Windows_v3.3.1.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.3.1.zip",
+  "version": "3.3.2",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Windows_v3.3.2.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.3.2.zip",
+  "changelog": [
+    "Added a centered, theme-aware update window with a What's New? changelog.",
+    "Update notes now come from the release manifest and render inside the update window.",
+    "Preserved the existing Install Update and Later behavior."
+  ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.1/NSCORP_Companion_Windows_v3.3.1.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.3.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Windows_v3.3.2.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.3.2.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.1/NSCORP_Companion_Mac_Apple_Silicon_v3.3.1.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.3.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.3.2/NSCORP_Companion_Mac_Apple_Silicon_v3.3.2.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.3.2.zip"
   }
 }
