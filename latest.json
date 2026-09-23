@@ -1,23 +1,22 @@
 {
-  "version": "3.4.0",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Windows_v3.4.0.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.4.0.zip",
+  "version": "3.4.1",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Windows_v3.4.1.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.4.1.zip",
   "changelog": [
-    "Added a theme-aware Help Center with searchable topics, article outlines, back navigation, and offline access.",
-    "Improved Help, Settings, and ROE controls across themes, including Standard navigation highlights.",
-    "Fixed Bulk Transfer duplicate-warning handling and kept each record's result independent.",
-    "Improved Static Group additions to wait for each save, recognize existing members beyond the first 100, and preserve partial progress.",
-    "Static Group history refresh now updates names as well as member counts.",
-    "Restart App now fully relaunches the app to load current changes.",
-    "Restored the required runtime files in the Apple Silicon package.",
+    "Declared v3.4.1 the stable build. Feature and UI changes are now frozen.",
+    "Added theme-aware fading underlines to primary workspace labels.",
+    "Moved NOAM Roster and Territories refresh controls below their lists, with status messages beside the button.",
+    "Reduced the Territories title-to-content gap for a tighter workspace layout.",
+    "Fixed Bulk Transfer Target Record validation for Sales Associate target reps.",
+    "Added a locally cached Territory List with a manual refresh option.",
     "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Windows_v3.4.0.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.4.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Windows_v3.4.1.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.4.1.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.0/NSCORP_Companion_Mac_Apple_Silicon_v3.4.0.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.4.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Mac_Apple_Silicon_v3.4.1.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.4.1.zip"
   }
 }
