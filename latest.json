@@ -9,6 +9,7 @@
     "Reduced the Territories title-to-content gap for a tighter workspace layout.",
     "Fixed Bulk Transfer Target Record validation for Sales Associate target reps.",
     "Added a locally cached Territory List with a manual refresh option.",
+    "Fixed the updater to show the changelog published in latest.json instead of an outdated fallback.",
     "*Help Center is work in progress"
   ],
   "windows": {
