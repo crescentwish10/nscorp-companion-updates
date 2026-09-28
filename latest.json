@@ -1,23 +1,23 @@
 {
-  "version": "3.4.1",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Windows_v3.4.1.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.4.1.zip",
+  "version": "3.4.2",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.2/NSCORP_Companion_Windows_v3.4.2.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.4.2.zip",
   "changelog": [
-    "Declared v3.4.1 the stable build. Feature and UI changes are now frozen.",
-    "Added theme-aware fading underlines to primary workspace labels.",
-    "Moved NOAM Roster and Territories refresh controls below their lists, with status messages beside the button.",
-    "Reduced the Territories title-to-content gap for a tighter workspace layout.",
-    "Fixed Bulk Transfer Target Record validation for Sales Associate target reps.",
-    "Added a locally cached Territory List with a manual refresh option.",
-    "Fixed the updater to show the changelog published in latest.json instead of an outdated fallback.",
+    "Renamed the app interface to NS Flow with the Continuous Ribbon logo, a white-and-teal wordmark, and a matching favicon.",
+    "Updated Help Center, update prompts, restart messages, and browser notices to use NS Flow.",
+    "Improved the compact navigation header to prevent the logo and account details from overlapping controls.",
+    "Fixed theme styling for Merge actions, Static Group confirmations, status pills, and disabled controls.",
+    "Static Group accepts record URLs with an extra slash and shows resolved ID + Name for added and already-present records.",
+    "Bulk Transfer updates today's Target Record date directly when the checkbox is already selected.",
+    "Completed Bulk Transfer batches can reapply changed guardrails after confirmation without reviewing the same records again.",
     "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Windows_v3.4.1.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.4.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.2/NSCORP_Companion_Windows_v3.4.2.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.4.2.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.1/NSCORP_Companion_Mac_Apple_Silicon_v3.4.1.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.4.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.2/NSCORP_Companion_Mac_Apple_Silicon_v3.4.2.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.4.2.zip"
   }
 }
