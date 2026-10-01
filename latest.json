@@ -3,6 +3,7 @@
   "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.4.4/NSCORP_Companion_Windows_v3.4.4.zip",
   "fileName": "NSCORP_Companion_Windows_v3.4.4.zip",
   "changelog": [
+    "Fixed Bulk Transfer Target Record date mismatches by applying the app's local date and confirming it before Save, even when NetSuite automatically supplies a different date.",
     "Bulk Transfer can reapply changed guardrails to the full reviewed batch after mixed results, including records previously marked Completed, Failed, or Skipped - Manual Review.",
     "Improved Target Record updates during Bulk Transfer by retrying a native checkbox action once when NetSuite does not accept it on the first attempt.",
     "Merge now shows an unavailable Subcustomer count as Unknown instead of 0, and highlights records with a confirmed positive Subcustomer count.",
