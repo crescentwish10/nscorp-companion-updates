@@ -1,24 +1,22 @@
 {
-  "version": "3.5.0",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.0/NSCORP_Companion_Windows_v3.5.0.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.5.0.zip",
+  "version": "3.5.1",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Windows_v3.5.1.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.5.1.zip",
   "changelog": [
-    "Added FlowBot, an optional text-only AI assistant with ChatGPT sign-in on Windows. Requires an installed Codex runtime; it cannot browse or perform NetSuite actions.",
-    "Bundled a 27-topic NS Flow knowledge base, with relevant guide excerpts and expandable Sources inside chat. No live records or app activity are automatically shared.",
-    "Fixed Bulk Transfer to use the requesting browser's timezone for Target Record dates and report a saved adjacent-date difference as a notice instead of a false failure.",
-    "Added a theme-aware chat overlay that opens and expands without shifting the app, with separate user and assistant bubbles and a subtle send-button glow.",
-    "Improved FlowBot replies with clickable links, basic formatting, paragraph spacing, and animated thinking dots inside the reply bubble.",
-    "Added automatic chat-session recovery after idle expiry or an app restart, preserving the open-page conversation and draft without replaying interrupted replies.",
-    "Kept the Bulk Transfer action labeled Transfer when reapplying guardrails.",
-    "Fixed compact headers to keep only the NS Flow icon as space decreases, while preserving scrollable navigation and preventing logo overlap.",
+    "Bulk Transfer now verifies the selected primary rep, sales role, contribution, and every enabled guardrail before Save.",
+    "Bulk Transfer preserves completed results after interruptions and distinguishes Not saved, Saved with discrepancy, Needs verification, and Not processed outcomes.",
+    "Added bounded post-save verification retries that read saved values without repeating Save or automatically retrying uncertain transfers.",
+    "Added batch-result recovery after a lost response or page refresh, with local diagnostics and protection against resubmitting an already-used batch ID.",
+    "Normal confirmed retries now exclude completed records; explicitly changed guardrails can still be reapplied to the reviewed batch after uncertain outcomes are resolved.",
+    "Improved FlowBot recognition of everyday workflow terminology and refreshed its bundled app guide for Bulk Transfer recovery.",
     "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.0/NSCORP_Companion_Windows_v3.5.0.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.5.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Windows_v3.5.1.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.5.1.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.0/NSCORP_Companion_Mac_Apple_Silicon_v3.5.0.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Mac_Apple_Silicon_v3.5.1.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.1.zip"
   }
 }
