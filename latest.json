@@ -1,22 +1,21 @@
 {
-  "version": "3.5.1",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Windows_v3.5.1.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.5.1.zip",
+  "version": "3.5.2",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Windows_v3.5.2.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.5.2.zip",
   "changelog": [
-    "Bulk Transfer now verifies the selected primary rep, sales role, contribution, and every enabled guardrail before Save.",
-    "Bulk Transfer preserves completed results after interruptions and distinguishes Not saved, Saved with discrepancy, Needs verification, and Not processed outcomes.",
-    "Added bounded post-save verification retries that read saved values without repeating Save or automatically retrying uncertain transfers.",
-    "Added batch-result recovery after a lost response or page refresh, with local diagnostics and protection against resubmitting an already-used batch ID.",
-    "Normal confirmed retries now exclude completed records; explicitly changed guardrails can still be reapplied to the reviewed batch after uncertain outcomes are resolved.",
-    "Improved FlowBot recognition of everyday workflow terminology and refreshed its bundled app guide for Bulk Transfer recovery.",
+    "Fixed ROE Checker revenue coverage so adjacent brackets sharing only an endpoint are conflicts, with consistent LMM, UMM, CORP, ENT, Hybrid, and revenue-based region checks.",
+    "Fixed Sales Rep searches in ROE Checker, Bulk Transfer, and Sales Reps so blank Sales Roles display --- instead of a manager's name.",
+    "Added support for NSCORP /next/customer/ record links in Records Search, Merge Assistant, Static Group, Bulk Transfer, ROE Checker, and SuiteWorld Duplicate Finder.",
+    "Added a live record counter during Bulk Transfer, showing the current record and how many have been processed.",
+    "Removed obsolete internal code and superseded styles while preserving the existing UI and workflows.",
     "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Windows_v3.5.1.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.5.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Windows_v3.5.2.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.5.2.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.1/NSCORP_Companion_Mac_Apple_Silicon_v3.5.1.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.1.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Mac_Apple_Silicon_v3.5.2.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.2.zip"
   }
 }
