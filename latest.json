@@ -1,21 +1,19 @@
 {
-  "version": "3.5.2",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Windows_v3.5.2.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.5.2.zip",
+  "version": "3.5.3",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Windows_v3.5.3.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.5.3.zip",
   "changelog": [
-    "Fixed ROE Checker revenue coverage so adjacent brackets sharing only an endpoint are conflicts, with consistent LMM, UMM, CORP, ENT, Hybrid, and revenue-based region checks.",
-    "Fixed Sales Rep searches in ROE Checker, Bulk Transfer, and Sales Reps so blank Sales Roles display --- instead of a manager's name.",
-    "Added support for NSCORP /next/customer/ record links in Records Search, Merge Assistant, Static Group, Bulk Transfer, ROE Checker, and SuiteWorld Duplicate Finder.",
-    "Added a live record counter during Bulk Transfer, showing the current record and how many have been processed.",
-    "Removed obsolete internal code and superseded styles while preserving the existing UI and workflows.",
+    "Smoothed the SOLDIER and Lucis backgrounds to remove visible bands and rectangular light transitions.",
+    "Refreshed l'Cie's background with a softer icy-blue vignette and changed its top header strip to navy.",
+    "Gave Standard's top header a muted teal color while keeping its tabs and buttons neutral.",
     "*Help Center is work in progress"
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Windows_v3.5.2.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.5.2.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Windows_v3.5.3.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.5.3.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.2/NSCORP_Companion_Mac_Apple_Silicon_v3.5.2.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.2.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Mac_Apple_Silicon_v3.5.3.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.3.zip"
   }
 }
