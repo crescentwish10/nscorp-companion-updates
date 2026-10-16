@@ -6,6 +6,14 @@
     "Smoothed the SOLDIER and Lucis backgrounds to remove visible bands and rectangular light transitions.",
     "Refreshed l'Cie's background with a softer icy-blue vignette and changed its top header strip to navy.",
     "Gave Standard's top header a muted teal color while keeping its tabs and buttons neutral.",
+    "Added depth to all theme headers and refined compact NS Flow branding.",
+    "Improved Merge Assistant headings, kept the Primary Record underline visible when zoomed out, and sized the Duplicate Record column to its longest name within the existing limit.",
+    "Shortened the Merge review note while retaining the permanent-merge warning and confirmation checkbox.",
+    "Expanded Current Territories to show up to six rows before scrolling and made the empty Territory Changes Summary compact.",
+    "Simplified the selected territory rep display to show the rep's name, vertical, tier, and sales sub region without a background box.",
+    "Hid empty selected-rep headings in ROE Checker and Sales Rep Search, displayed the selected rep's name in the heading, and made Extract theme-aware.",
+    "Made enabled Bulk Transfer options automatically select Target Record, Manager TAL with its default holdout date, and Out of Alignment.",
+    "Corrected footer spacing so content stays at the top, short pages use a 900px minimum height, and longer content pushes the footer down naturally.",
     "*Help Center is work in progress"
   ],
   "windows": {
