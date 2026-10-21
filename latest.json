@@ -1,27 +1,25 @@
 {
-  "version": "3.5.3",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Windows_v3.5.3.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.5.3.zip",
+  "version": "3.6.0",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Windows_v3.6.0.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.6.0.zip",
   "changelog": [
-    "Smoothed the SOLDIER and Lucis backgrounds to remove visible bands and rectangular light transitions.",
-    "Refreshed l'Cie's background with a softer icy-blue vignette and changed its top header strip to navy.",
-    "Gave Standard's top header a muted teal color while keeping its tabs and buttons neutral.",
-    "Added depth to all theme headers and refined compact NS Flow branding.",
-    "Improved Merge Assistant headings, kept the Primary Record underline visible when zoomed out, and sized the Duplicate Record column to its longest name within the existing limit.",
-    "Shortened the Merge review note while retaining the permanent-merge warning and confirmation checkbox.",
-    "Expanded Current Territories to show up to six rows before scrolling and made the empty Territory Changes Summary compact.",
-    "Simplified the selected territory rep display to show the rep's name, vertical, tier, and sales sub region without a background box.",
-    "Hid empty selected-rep headings in ROE Checker and Sales Rep Search, displayed the selected rep's name in the heading, and made Extract theme-aware.",
-    "Made enabled Bulk Transfer options automatically select Target Record, Manager TAL with its default holdout date, and Out of Alignment.",
-    "Corrected footer spacing so content stays at the top, short pages use a 900px minimum height, and longer content pushes the footer down naturally.",
-    "*Help Center is work in progress"
+    "Added Records > Reactivate to review inactive records, remove unwanted rows, clear Customer is Inactive, and remove only a leading INACTIVE_ from company names before saving and verifying.",
+    "Added Reactivate retries without changing the reviewed list, fresh-state reconciliation of interrupted saves, and an empty results table after refresh.",
+    "Standardized all Stop controls, including FlowBot, with an X icon, theme-aware STOP styling, and a red hover or keyboard-focus highlight.",
+    "Completed Help Center articles and improved category navigation and Back labels; removed the unfinished Help Center notice.",
+    "Unified loading and search notices with animated dots, actual result counts, and readable sales-rep names instead of internal IDs.",
+    "Added frosted-glass material surfaces across themes and refined Standard with pearl-grey panels and subtle field and table gradients.",
+    "Added animated detail sections, selected record and rep names as headings, and hidden empty detail sections in Records Search and Hybrid Reps.",
+    "Improved record-detail tab contrast and separators across themes, including l'Cie, and corrected Merge Assistant Country dropdown visibility.",
+    "Improved Bulk Transfer option spacing, removed unwanted checkbox borders, and refined saved-field discrepancy reporting.",
+    "Made the FlowBot account email more prominent with a sign-out divider and a subtle illuminated separator."
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Windows_v3.5.3.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.5.3.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Windows_v3.6.0.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.6.0.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.5.3/NSCORP_Companion_Mac_Apple_Silicon_v3.5.3.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.5.3.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Mac_Apple_Silicon_v3.6.0.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.6.0.zip"
   }
 }
