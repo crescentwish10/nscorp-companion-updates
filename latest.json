@@ -1,25 +1,20 @@
 {
-  "version": "3.6.0",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Windows_v3.6.0.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.6.0.zip",
+  "version": "3.7.0",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Windows_v3.7.0.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.7.0.zip",
   "changelog": [
-    "Added Records > Reactivate to review inactive records, remove unwanted rows, clear Customer is Inactive, and remove only a leading INACTIVE_ from company names before saving and verifying.",
-    "Added Reactivate retries without changing the reviewed list, fresh-state reconciliation of interrupted saves, and an empty results table after refresh.",
-    "Standardized all Stop controls, including FlowBot, with an X icon, theme-aware STOP styling, and a red hover or keyboard-focus highlight.",
-    "Completed Help Center articles and improved category navigation and Back labels; removed the unfinished Help Center notice.",
-    "Unified loading and search notices with animated dots, actual result counts, and readable sales-rep names instead of internal IDs.",
-    "Added frosted-glass material surfaces across themes and refined Standard with pearl-grey panels and subtle field and table gradients.",
-    "Added animated detail sections, selected record and rep names as headings, and hidden empty detail sections in Records Search and Hybrid Reps.",
-    "Improved record-detail tab contrast and separators across themes, including l'Cie, and corrected Merge Assistant Country dropdown visibility.",
-    "Improved Bulk Transfer option spacing, removed unwanted checkbox borders, and refined saved-field discrepancy reporting.",
-    "Made the FlowBot account email more prominent with a sign-out divider and a subtle illuminated separator."
+    "Replaced the standalone Sales Rep Search menu with Search Roster, followed by Hybrid Reps List.",
+    "Added linked employee profiles, cached territory previews, and fresh detail loading with Extract.",
+    "Made roster results shrink to their contents, capped at 13 rows, and brought loaded details into view when needed.",
+    "Successful roster refresh clears territory caches; failed refresh preserves them.",
+    "Refined navigation contrast, filter labels, and Records Search column headings."
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Windows_v3.6.0.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.6.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Windows_v3.7.0.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.7.0.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.6.0/NSCORP_Companion_Mac_Apple_Silicon_v3.6.0.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.6.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Mac_Apple_Silicon_v3.7.0.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.7.0.zip"
   }
 }
