@@ -1,0 +1,10 @@
+NS Flow (NSCORP Companion App) v3.7.0
+Release date: October 22, 2026
+
+What's New?
+
+- Replaced the standalone Sales Rep Search menu with Search Roster, followed by Hybrid Reps List.
+- Added linked employee profiles, cached territory previews, and fresh detail loading with Extract.
+- Made roster results shrink to their contents, capped at 13 rows, and brought loaded details into view when needed.
+- Successful roster refresh clears territory caches; failed refresh preserves them.
+- Refined navigation contrast, filter labels, and Records Search column headings.
