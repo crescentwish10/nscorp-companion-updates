@@ -1,20 +1,23 @@
 {
-  "version": "3.7.0",
-  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Windows_v3.7.0.zip",
-  "fileName": "NSCORP_Companion_Windows_v3.7.0.zip",
+  "version": "3.7.1",
+  "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.1/NSCORP_Companion_Windows_v3.7.1.zip",
+  "fileName": "NSCORP_Companion_Windows_v3.7.1.zip",
   "changelog": [
-    "Replaced the standalone Sales Rep Search menu with Search Roster, followed by Hybrid Reps List.",
-    "Added linked employee profiles, cached territory previews, and fresh detail loading with Extract.",
-    "Made roster results shrink to their contents, capped at 13 rows, and brought loaded details into view when needed.",
-    "Successful roster refresh clears territory caches; failed refresh preserves them.",
-    "Refined navigation contrast, filter labels, and Records Search column headings."
+    "Search Roster supports names in either order, ignores commas, and loads details on the first View click.",
+    "Added prominent, theme-aware selected-record and sales-rep banners with click-to-collapse behavior across Records Search, Search Roster, ROE Checker, and Bulk Transfer.",
+    "New rep search text clears the previous selection; delayed lookups cannot restore an outdated target. Bulk Transfer confirmation names the destination rep.",
+    "Bulk Transfer clears old table results when a new review begins, preserves surname-first employee lookup, allows more time for slow NSCORP responses, and reports lookup IDs accurately without weakening identity checks.",
+    "Session Health refreshes every five seconds while the app is visible and when returning to it, without overlapping checks.",
+    "Merge Assistant checks all contact pages, supports next/customer edit URLs, and displays Vertical and Industry with warnings for differing verticals.",
+    "Improved narrow-screen notices and Merge Review button layout, expanded Territory Changes Summary, and removed hover movement from header utility buttons.",
+    "Static Group Creator warns about duplicate names in local Created Groups history, ignoring capitalization and surrounding spaces."
   ],
   "windows": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Windows_v3.7.0.zip",
-    "fileName": "NSCORP_Companion_Windows_v3.7.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.1/NSCORP_Companion_Windows_v3.7.1.zip",
+    "fileName": "NSCORP_Companion_Windows_v3.7.1.zip"
   },
   "mac": {
-    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.0/NSCORP_Companion_Mac_Apple_Silicon_v3.7.0.zip",
-    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.7.0.zip"
+    "downloadUrl": "https://github.com/crescentwish10/nscorp-companion-updates/releases/download/v3.7.1/NSCORP_Companion_Mac_Apple_Silicon_v3.7.1.zip",
+    "fileName": "NSCORP_Companion_Mac_Apple_Silicon_v3.7.1.zip"
   }
 }
